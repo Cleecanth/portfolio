@@ -1,0 +1,66 @@
+{
+    "name": "chrisly-portfolio",
+    "version": "1.0.0",
+    "description": "personal site",
+    "main": "index.js",
+    "scripts": {
+        "dev": "sapper dev",
+        "build": "sapper build",
+        "export": "sapper export",
+        "start": "node build",
+        "cy:run": "cypress run",
+        "cy:open": "cypress open",
+        "test": "run-p --race dev cy:run"
+    },
+    "browserslist": [
+        ">0.5%",
+        "ie >= 11",
+        "safari >= 10",
+        "last 3 iOS versions",
+        "last 3 Chrome versions",
+        "last 3 Firefox versions",
+        "last 3 Edge versions"
+    ],
+    "stylelint": {
+        "extends": [
+            "./node_modules/@uwhealth/linter-configs/stylelint.js"
+        ]
+    },
+    "eslintConfig": {
+        "root": true,
+        "extends": [
+            "./node_modules/@uwhealth/linter-configs/eslint.js"
+        ],
+        "overrides": [
+            {
+                "files": [
+                    "config/**/*.js",
+                    "build/**/*.js"
+                ],
+                "rules": {
+                    "no-console": "off"
+                }
+            }
+        ]
+    },
+    "eslintIgnore": [
+        "node_modules/*",
+        "dist/*"
+    ],
+    "dependencies": {
+        "compression": "^1.7.1",
+        "polka": "^0.4.0",
+        "sapper": "^0.21.0",
+        "sirv": "^0.2.0"
+    },
+    "devDependencies": {
+        "@uwhealth/linter-configs": "^1.2.0",
+        "eslint": "^5.6.1",
+        "npm-run-all": "^4.1.2",
+        "prettier": "^1.14.3",
+        "stylelint": "^9.6.0",
+        "svelte": "^2.0.0",
+        "svelte-loader": "^2.9.0",
+        "webpack": "^4.7.0"
+    }
+}
