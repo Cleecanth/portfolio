@@ -4,11 +4,13 @@
 	<svelte:component this={child.component} {...child.props}/>
 </main>
 
-<style>
+<style lang="scss">
+    @import '../../config/sass.config.scss';
+
 	main {
 		position: relative;
 		max-width: 56em;
-		background-color: white;
+		background-color: color('bg');
 		padding: 2em;
 		margin: 0 auto;
 		box-sizing: border-box;

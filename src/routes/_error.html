@@ -10,26 +10,16 @@
 	<pre>{error.stack}</pre>
 {/if}
 
-<style>
-	h1, p {
-		margin: 0 auto;
-	}
+<style lang="scss">
+@import '../../config/sass.config.scss';
 
-	h1 {
-		font-size: 2.8em;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
-	}
-
-	p {
-		margin: 1em auto;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
-	}
+pre :global(code) {
+	font-size: calc(1em - 2px);
+	color: #555;
+	background-color: color('bg', 'dark');
+	padding: type-space(.25 .35);
+	border-radius: 2px;
+}
 </style>
 
 <script>

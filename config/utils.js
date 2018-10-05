@@ -44,12 +44,7 @@ function processSass(input) {
     const attributes = input.attributes;
     const filename = input.filename;
 
-    if (
-        attributes.type !== 'text/scss' &&
-        attributes.type !== 'text/sass' &&
-        attributes.lang !== 'scss' &&
-        attributes.lang !== 'sass'
-    ) {
+    if (attributes.type === 'text/css' && attributes.lang === 'css') {
         return;
     }
     try {
