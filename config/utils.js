@@ -70,5 +70,5 @@ function processSass(input) {
 
 module.exports = {
     babel: babelConfig,
-    sass: processSass
+    sass: processSass,
 };

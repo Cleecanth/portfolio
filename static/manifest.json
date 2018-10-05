@@ -1,8 +1,8 @@
 {
 	"background_color": "#ffffff",
-	"theme_color": "#aa1e1e",
-	"name": "TODO",
-	"short_name": "TODO",
+	"theme_color": "#10dfc0",
+	"name": "Chris Lee's Portfolio",
+	"short_name": "Chrisly",
 	"display": "minimal-ui",
 	"start_url": "/",
 	"icons": [

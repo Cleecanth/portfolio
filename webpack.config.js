@@ -108,6 +108,9 @@ module.exports = {
                             css: false,
                             generate: 'ssr',
                             dev,
+                            preprocess: {
+                                style: configUtils.sass,
+                            },
                         },
                     },
                 },
