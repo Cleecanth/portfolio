@@ -97,7 +97,13 @@ module.exports = {
             extensions: ['.js', '.json', '.html'],
             mainFields: ['svelte', 'module', 'browser', 'main'],
         },
-        externals: Object.keys(pkg.dependencies),
+        externals: Object.keys(pkg.dependencies)
+            .concat('encoding')
+            .concat('node-sass-middleware')
+            .concat('node-sass')
+            .concat('path')
+            .concat('postcss-middleware')
+            .concat('autoprefixer'),
         module: {
             rules: [
                 {
