@@ -1,6 +1,7 @@
 const path = require('path');
 const sass = require('node-sass');
 const postcss = require('postcss');
+const sassImporter = require('./sass-importer.js');
 
 const babelConfig = {
     cacheDirectory: true,
@@ -52,6 +53,7 @@ function processSass(input) {
             sassConfig.data = content;
             sassConfig.outFile = filename;
             sassConfig.includePaths = [path.dirname(filename)];
+            sassConfig.importer = sassImporter;
             cssResult = sass.renderSync(sassConfig).css.toString('utf-8');
         } catch (e) {
             return e;
