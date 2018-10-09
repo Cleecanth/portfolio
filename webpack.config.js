@@ -41,7 +41,7 @@ module.exports = {
                     ],
                 },
                 {
-                    test: /\.css$/,
+                    test: /\.s?css$/,
                     use: [
                         dev
                             ? {
@@ -52,17 +52,13 @@ module.exports = {
                             : // extract CSS in production builds
                               MiniCssExtractPlugin.loader,
                         { loader: 'css-loader', options: { sourceMap: dev } },
-                        // {
-                        //     loader: 'postcss-loader',
-                        //     options: { sourceMap: dev },
-                        // },
+                        'sass-loader',
                     ],
                 },
                 {
                     test: /\.(js|jsx)$/,
                     enforce: 'post',
                     exclude: [
-                        /node_modules\/babel-/m,
                         /node_modules\/core-js\//m,
                         /node_modules\/regenerator-runtime\//m,
                         /node_modules\/@?babel/,
@@ -101,7 +97,6 @@ module.exports = {
             .concat('encoding')
             .concat('node-sass-middleware')
             .concat('node-sass')
-            .concat('path')
             .concat('postcss-middleware')
             .concat('autoprefixer'),
         module: {

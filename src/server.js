@@ -1,7 +1,6 @@
 import sirv from 'sirv';
 import polka from 'polka';
 import compression from 'compression';
-import path from 'path';
 import * as sapper from '../__sapper__/server.js';
 
 const { PORT, NODE_ENV } = process.env;

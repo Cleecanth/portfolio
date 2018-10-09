@@ -1,5 +1,6 @@
 const path = require('path');
 const sass = require('node-sass');
+const postcss = require('postcss');
 
 const babelConfig = {
     cacheDirectory: true,
@@ -44,26 +45,34 @@ function processSass(input) {
     const attributes = input.attributes;
     const filename = input.filename;
 
-    if (attributes.type === 'text/css' && attributes.lang === 'css') {
-        return;
-    }
-    try {
-        sassConfig.data = content;
-        sassConfig.outFile = filename;
-        sassConfig.includePaths = [path.dirname(filename)];
-        const result = sass.renderSync(sassConfig);
+    let cssResult = content;
 
-        return {
-            code: result.css.toString('utf-8'),
-            map: result.map,
-        };
-    } catch (e) {
-        console.error(filename + '\n', new Error(e));
-        return;
+    if (attributes.type !== 'text/css' && attributes.lang !== 'css') {
+        try {
+            sassConfig.data = content;
+            sassConfig.outFile = filename;
+            sassConfig.includePaths = [path.dirname(filename)];
+            cssResult = sass.renderSync(sassConfig).css.toString('utf-8');
+        } catch (e) {
+            return e;
+        }
     }
+
+    return new Promise((fulfil, reject) => {
+        return postcss(require('../postcss.config.js'))
+            .process(cssResult, { from: filename })
+            .then((result) => {
+                return fulfil({
+                    code: result.css,
+                    map: result.map,
+                });
+            })
+            .catch((err) => reject(err));
+    });
 }
 
 module.exports = {
+    sassConfig,
     babel: babelConfig,
     sass: processSass,
 };
