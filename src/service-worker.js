@@ -76,7 +76,6 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.open(`offline${timestamp}`).then(async (cache) => {
             try {
-
                 const response = await fetch(event.request);
                 cache.put(event.request, response.clone());
                 return response;
