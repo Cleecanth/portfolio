@@ -3,6 +3,7 @@
 //------------------------------------
 %primary-font-family {
     font-family: $primary-font-stack;
+    letter-spacing: .017;
 }
 
 %secondary-font-family {
@@ -18,10 +19,10 @@ html {
     font-size: percentage($base-font-size/16px);
     @include interpolate('font-size',
         $min-screen: ems($max-content-width, 16px),
-        $min-value: ems(15px, 16px),
+        $min-value: ems(14px, 16px),
         $max-screen: ems($max-site-width, 16px),
-        $max-value: ems(24px, 16px),
-        $easing: 'ease-in-out'
+        $max-value: ems(18px, 16px),
+        $easing: 'ease-out'
     );
     line-height: $type-base-ratio;
 }
@@ -66,6 +67,7 @@ h6 {
 @include headings(1, 6) {
     @extend %base-heading-space;
     @extend %primary-font-family;
+    font-weight: normal;
 
     & + p {
         @include type-space(margin-top, -1);

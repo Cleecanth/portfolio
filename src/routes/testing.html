@@ -1,0 +1,49 @@
+<svelte:head>
+	<title>Tests</title>
+</svelte:head>
+
+<h1>Great success!</h1>
+
+<div class="font-compare">
+    <p class="font-1 font">
+        Aenean eu neque nec odio facilisis tincidunt. Nullam pharetra nulla at tincidunt malesuada. Suspendisse libero lectus, sodales vitae ornare eu, hendrerit eget mi. Nam quis efficitur arcu. Vivamus ultricies dictum metus, id bibendum sem ultrices nec. Donec facilisis pellentesque dui, id gravida enim ornare mollis. Curabitur tempus justo eu ligula blandit, at aliquet ex maximus. Ut suscipit vestibulum porta. Donec rutrum eros id orci imperdiet congue at vitae mauris.
+    </p>
+
+    <p class="font-2 font font-overlay">
+        Aenean eu neque nec odio facilisis tincidunt. Nullam pharetra nulla at tincidunt malesuada. Suspendisse libero lectus, sodales vitae ornare eu, hendrerit eget mi. Nam quis efficitur arcu. Vivamus ultricies dictum metus, id bibendum sem ultrices nec. Donec facilisis pellentesque dui, id gravida enim ornare mollis. Curabitur tempus justo eu ligula blandit, at aliquet ex maximus. Ut suscipit vestibulum porta. Donec rutrum eros id orci imperdiet congue at vitae mauris.
+    </p>
+</div>
+
+<style lang="scss">
+    @import '@sassConfig';
+
+	h1 {
+		text-align: center;
+		margin-left: auto;
+        margin-right: auto;
+	}
+
+    .font-compare {
+        position: relative;
+    }
+
+    .font-1 {
+        font-family: 'IBM Plex Mono', monospace;
+        color: blue;
+        opacity: .7;
+    }
+
+    .font-2 {
+        font-family: 'Vollkorn', serif;
+        @include font-size($base-font-size + 1px);
+        letter-spacing: .015em;
+        color: red;
+        opacity: .7;
+    }
+
+    .font-overlay {
+        position: absolute;
+        left: 0;
+        top: .1em;
+    }
+</style>

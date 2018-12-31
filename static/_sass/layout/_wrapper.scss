@@ -1,0 +1,9 @@
+.wrap {
+    margin-left: auto;
+    margin-right: auto;
+    padding: type-space(0 1);
+}
+
+.wrap--wide {
+    max-width: px-to-rems($max-site-width);
+}

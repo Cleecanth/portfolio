@@ -1,11 +1,8 @@
 const path = require('path');
+const aliases = require('./aliases.js');
 
 const PATHS = {
-    aliases: {
-        '@sassConfig': path.resolve(__dirname, 'sass.config.scss'),
-        '@global': path.resolve(__dirname, '../static/_sass/'),
-        '~node': path.resolve(__dirname, '../node_modules'),
-    },
+    aliases,
 };
 
 module.exports = function aliasPath(url) {

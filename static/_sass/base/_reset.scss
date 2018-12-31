@@ -84,3 +84,10 @@ table {
     margin: 0;
     @include type-space(margin-bottom, 1);
 }
+
+nav {
+    ul,
+    ol {
+        list-style: none;
+    }
+}

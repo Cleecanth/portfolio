@@ -38,7 +38,12 @@ const babelConfig = {
 const sassConfig = {
     outputStyle: 'expanded',
     errLogToConsole: true,
-    includePaths: [path.resolve('../src'), path.resolve('../static')],
+    includePaths: [
+        path.resolve('../src'),
+        path.resolve('../static'),
+        path.resolve(process.cwd()),
+    ],
+    importer: sassImporter,
 };
 
 function processSass(input) {
@@ -50,6 +55,7 @@ function processSass(input) {
 
     if (attributes.type !== 'text/css' && attributes.lang !== 'css') {
         try {
+            //console.log('importing');
             sassConfig.data = content;
             sassConfig.outFile = filename;
             sassConfig.includePaths = [path.dirname(filename)];
@@ -76,5 +82,6 @@ function processSass(input) {
 module.exports = {
     sassConfig,
     babel: babelConfig,
-    sass: processSass,
+    sass: sassConfig,
+    postcss: require('../postcss.config.js'),
 };

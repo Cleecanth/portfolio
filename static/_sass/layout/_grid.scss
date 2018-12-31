@@ -1,0 +1,10 @@
+$namespace: '';
+@include grid-setup;
+
+.grid {
+    @extend %grid;
+}
+
+.grid__item {
+    @extend %grid__item;
+}

@@ -1,5 +1,18 @@
-<Nav segment={child.segment}/>
+<svelte:head>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:200,400,700|Volkhov:400,700" rel="stylesheet">
+</svelte:head>
 
+<header class="page-header bg-{child.props.color}">
+    <Nav segment={child.segment} color={child.props.color}/>
+    <div class="wrap wrap--wide page-header__wrap on-{child.props.color}">
+        <h1 class="{child.props.subhead ? 'page-title--large' : ''} page-title">
+            {#if child.props.subhead}
+            <small>{child.props.subhead}</small>
+            {/if}
+            {@html child.props.header}
+        </h1>
+    </div>
+</header>
 <main>
 	<svelte:component this={child.component} {...child.props}/>
 </main>
@@ -7,14 +20,53 @@
 <style lang="scss">
     @import '@sassConfig';
 
-	main {
-		position: relative;
-		max-width: px-to-rems($max-site-width);
-		background-color: color('bg', 'light');
-		padding: 2em;
-		margin: 0 auto;
-		box-sizing: border-box;
-	}
+    .page-header__wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 90vh;
+    }
+
+    .page-title {
+        position: relative;
+        display: flex;
+        @include font-size($h2-fs, $h2-lh);
+        margin-left: grid-size(3);
+        max-width: grid-size(7);
+        padding: type-space(1 0 3);
+        flex-grow: 1;
+        letter-spacing: .01em;
+        align-items: center;
+
+        @include mq('lap') {
+            max-width: grid-size(8);
+            margin-left: type-space(4);
+        }
+
+        @include mq('smalls') {
+            max-width: grid-size(11);
+            margin-left: type-space(1);
+        }
+
+        @include mq('small') {
+            margin-left: type-space(.5);
+        }
+    }
+
+    .page-title--large{
+        @include font-size($h1-fs, $h1-lh);
+    }
+
+    :global(.bg-black) {
+        .page-title {
+            color: #E5E5E5;
+        }
+    }
+
+    main {
+        position: relative;
+    }
+
 </style>
 
 <script>

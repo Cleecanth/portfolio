@@ -1,49 +1,69 @@
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Chris Lee</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<section class="promo-group">
+    <h2 class="txt-huge txt-x-track">Work Samples</h2>
+    {#each promos as promo (promo.title)}
+        <Promo {...promo} ></Promo>
+    {/each}
+</section>
 
-<div class="font-compare">
-    <p class="font-1 font">
-        Aenean eu neque nec odio facilisis tincidunt. Nullam pharetra nulla at tincidunt malesuada. Suspendisse libero lectus, sodales vitae ornare eu, hendrerit eget mi. Nam quis efficitur arcu. Vivamus ultricies dictum metus, id bibendum sem ultrices nec. Donec facilisis pellentesque dui, id gravida enim ornare mollis. Curabitur tempus justo eu ligula blandit, at aliquet ex maximus. Ut suscipit vestibulum porta. Donec rutrum eros id orci imperdiet congue at vitae mauris.
-    </p>
+<section class="excerpt-block">
+</section>
 
-    <p class="font-2 font font-overlay">
-        Aenean eu neque nec odio facilisis tincidunt. Nullam pharetra nulla at tincidunt malesuada. Suspendisse libero lectus, sodales vitae ornare eu, hendrerit eget mi. Nam quis efficitur arcu. Vivamus ultricies dictum metus, id bibendum sem ultrices nec. Donec facilisis pellentesque dui, id gravida enim ornare mollis. Curabitur tempus justo eu ligula blandit, at aliquet ex maximus. Ut suscipit vestibulum porta. Donec rutrum eros id orci imperdiet congue at vitae mauris.
-    </p>
-</div>
+<script>
+import Promo from '../components/Promo.html';
 
-<style>
+const defaults = {
+    color: 'black',
+    header:
+        '<div><span class="txt-x-smaller txt-mono txt-x-track">Web and Graphic Designer</span><br> invigorated by merging logic with emotion to create powerful visual communication</div>',
+    subhead: false,
+};
+
+export default {
+    data: () => Object.assign({}, defaults, {}),
+    components: { Promo },
+    helpers: {
+        promos: [
+            {
+                title: 'User Interface &&nbsp;Development',
+                altTitle: 'UI & Dev',
+                subtitle: 'add',
+                link: '/about',
+                image: require('../../static/_work-samples/smph-home.jpg'),
+            },
+            {
+                title: 'Print<br> & Illustration',
+                altTitle: '',
+                subtitle: 'subtract',
+                link: '/about',
+                image: require('../../static/_work-samples/rvc-ww09-2.jpg'),
+            },
+            {
+                title: 'All <br> Work',
+                subtitle: 'multiply',
+                link: '/about',
+            },
+        ],
+    },
+    preload() {
+        return defaults;
+    },
+};
+</script>
+
+<style type="text/scss">
     @import '@sassConfig';
 
-	h1 {
-		text-align: center;
-		margin-left: auto;
-        margin-right: auto;
-	}
+    .promo-group {
+        display: flex;
+        margin-top: type-space(-3);
+        max-width: 100%;
 
-    .font-compare {
-        position: relative;
-    }
-
-    .font-1 {
-        font-family: 'IBM Plex Mono', monospace;
-        color: blue;
-        opacity: .7;
-    }
-
-    .font-2 {
-        font-family: 'Vollkorn', serif;
-        @include font-size($base-font-size + 1px);
-        letter-spacing: .015em;
-        color: red;
-        opacity: .7;
-    }
-
-    .font-overlay {
-        position: absolute;
-        left: 0;
-        top: .1em;
+        @include mq('desk', 'lap') {
+            padding-left: grid-size(1);
+        }
     }
 </style>

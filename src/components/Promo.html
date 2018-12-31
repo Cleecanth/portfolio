@@ -1,0 +1,125 @@
+<a href="{link}" class="promo promo-group__item">
+    <img src="{image}" class="promo__image" alt="">
+    <div class="promo__header promo__content">
+        <label class="promo__subtitle">{subtitle}</label>
+        <h2 class="promo__title">
+            <span>{@html title}</span>
+        </h2>
+    </div>
+    <div class="promo__action-container promo__content">
+        {@html arrow}
+    </div>
+</a>
+
+<script>
+import arrow from '../../static/_arrow.svg?inline';
+
+export default {
+    data() {
+        return {
+            image: '',
+        };
+    },
+    helpers: {
+        arrow: arrow,
+    },
+    computed: {},
+};
+</script>
+
+<style lang="scss">
+@import '@sassConfig';
+
+label {
+    color: color('links', 'lighter');
+    font-family: $monospace-font-stack;
+    letter-spacing: .07em;
+    display: inline-block;
+    margin-bottom: type-space(1);
+}
+
+.promo {
+    position: relative;
+    display: flex;
+    max-width: grid-size(4);
+    flex: 0 0 grid-size(4);
+    flex-direction: column;
+    padding: type-space(2.5 2 4 2.5);
+    background-image: linear-gradient(185deg, #{$highlight-gradient});
+    text-decoration: none;
+    overflow: hidden;
+
+    @include mq('smalls') {
+        padding: type-space(2 1.5 3);
+    }
+
+    @include mq('small') {
+        padding: type-space(2 1 3);
+    }
+
+    &:hover {
+        .promo__image {
+            //opacity: .15;
+        }
+
+        .promo__content {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.promo__content {
+    position: relative;
+    transform: scale(1);
+    z-index: 1;
+    transition: transform 1800ms #{c-ease('ease-out-cubic')};
+}
+
+.promo__header {
+    flex: 1 0 type-space(6);
+    padding-bottom: type-space(5);
+    letter-spacing: 0.09em;
+    margin-left: -.75ch;
+
+    span {
+        // Adjust font-size for visual weight
+        font-size: .9em;
+    }
+}
+
+.promo__image {
+    min-width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    margin-left: 100%;
+    transform: translateX(-100%);
+    top: 0;
+    opacity: .1;
+    mix-blend-mode: hard-light;
+    transition: opacity 400ms #{c-ease('ease-out-cubic')};
+}
+
+.promo__title {
+    color: #fff;
+    max-width: rems(400px);
+    @include font-size($h4-fs, $h4-lh);
+
+    @include mq('bigs') {
+        @include font-size($h3-fs, $h3-fs);
+    }
+}
+
+.promo__action-container {
+    width: 100%;
+    flex: 0 1 type-space(3);
+}
+
+.promo__action-container :global(svg) {
+    max-width: 25%;
+    min-width: type-space(2);
+    width: type-space(3);
+    height: type-space(3);
+    margin-left: -.5ch;
+}
+</style>

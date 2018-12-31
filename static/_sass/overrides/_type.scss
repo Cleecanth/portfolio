@@ -1,0 +1,41 @@
+.txt-mono {
+    font-family: $monospace-font-stack !important;
+}
+
+.txt-main {
+    font-family: $primary-font-stack !important;
+}
+
+.txt-smaller {
+    font-size: .825em !important;
+}
+
+.txt-x-smaller {
+    font-size: .6em !important;
+}
+
+.txt-track {
+    letter-spacing: .06em !important;
+}
+
+.txt-x-track {
+    letter-spacing: .125em !important;
+}
+
+.txt-bold {
+    font-weight: 700 !important;
+}
+
+.txt-normal {
+    font-weight: 400 !important;
+}
+
+.txt-huge {
+    position: absolute;
+    left: type-space(-5);
+    color: #fff;
+    opacity: .03;
+    font-size: rems(190px);
+    line-height: 1;
+    top: type-space(-2);
+}

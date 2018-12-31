@@ -1,0 +1,13 @@
+.bg-black {
+    background-color: color('bg', 'dark') !important;
+}
+
+.bg-highlight {
+    background-color: color('highlight');
+    background-image: linear-gradient(
+        to bottom,
+        color('highlight', 'light'),
+        color('highlight') 35%,
+        color('highlight', 'dark')
+    );
+}

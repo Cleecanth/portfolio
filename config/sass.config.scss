@@ -4,17 +4,17 @@ $base-font-size:            18px;
 $base-line-height:          27px;
 $font-looseness: 			35%;
 $auto-scale-type:           false;
-$scale-ratio:               1.275;
+$scale-ratio:               1.175;
 
 $vertical-space:			$base-line-height; // Maintains best vertical rhythm
 $horizontal-space: 			$vertical-space; // Simplifies measurements
 
 $rem-px-fallback: 			false;
 
-$type-h1-size:           (modular-scale(6), baseline-calc(modular-scale(6), 2%));
-$type-h2-size:           (modular-scale(5));
-$type-h3-size:           (modular-scale(4));
-$type-h4-size:           (modular-scale(3));
+$type-h1-size:           (109px, baseline-calc(109px, 2%));
+$type-h2-size:           (58px, 72px);
+$type-h3-size:           (50px, 50px);
+$type-h4-size:           (36px, 40.5px);
 $type-h5-size:           (modular-scale(2));
 $type-h6-size:           (modular-scale(1));
 $type-p-size:            (modular-scale(0.25));
@@ -33,15 +33,17 @@ $web-fonts: (
     )
 );
 
-$primary-font-stack:    $system-font-stack;
-$secondary-font-stack:  "Asap", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-$monospace-font-stack:  "Consolas", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Monaco", "Courier New", "Courier", monospace;
+$primary-font-stack:    "Volkhov", Georgia, "Times New Roman", serif;
+$secondary-font-stack:  $system-font-stack;
+$monospace-font-stack:  "IBM Plex Mono", "Consolas", "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Monaco", "Courier New", "Courier", monospace;
 
-$max-site-width:         1360px;
+$column-width:           143px;
 
-$max-content-width: 	 690px;
+$max-site-width:         12 * $column-width;
 
-$max-wide-content-width: 910px;
+$max-content-width: 	 7  * $column-width ;
+
+$max-wide-content-width: 9  * $column-width;
 
 $breakpoints: (
     // Mostly phones
@@ -67,11 +69,11 @@ $breakpoint-namespace-character: "\\@";
 
 $grid-columns:           12;
 $grid-gutter:            $horizontal-space;
-$grid-silent-classes:	 false;
+$grid-silent-classes:	 true;
 $grid-push:              true;
-$breakpoint-has-push:   ('smalls', 'small', 'smallish', 'bigs', 'lap', 'desk');
+$breakpoint-has-push:    map-keys($breakpoints);
 $grid-pull:              true;
-$breakpoint-has-pull:   ('smalls', 'small', 'smallish', 'bigs', 'lap', 'desk');
+$breakpoint-has-pull:    map-keys($breakpoints);;
 
 $grid-bem-naming:        true;
 
@@ -82,13 +84,26 @@ $grid-inline-block:      true;
 $grid-markup-fix:        false;
 $grid-letter-space-fix:  -0.45em;
 
-$breakpoint-has-widths: ('smalls', 'small', 'smallish', 'bigs', 'lap', 'desk');
+$breakpoint-has-widths: map-keys($breakpoints);;
 
 $base-colors: generate-color-variations(
     $map: (
-        'type': #0d1113, //Required
-        'links': #0d497b, //Required
-        'bg': hsl(188, 50%, 98%), //Required
+        'type': (
+            'base': #1A2227,
+            'inverse': #F0F0F0
+        ),
+        'links': (
+            'base': #70FFE7,
+        ),
+        'highlight': (
+            'light': #34F5EE,
+            'base': #1AC1C7,
+            'dark': #1C9EAF
+        ),
+        'bg': (
+         'base': #fff,
+         'dark': #14232d,
+        )
     ),
     $variations: ( //Color variation names
         'light', 'lighter', 'lightest',
@@ -99,14 +114,18 @@ $base-colors: generate-color-variations(
         'darken', 'linearburn', 'linearburn'
     ),
     $blending-colors: ( //Allows for more uniform colors
-        #bfccd6, #dee9ec, null,
-        null, #4c5a66, #323d42
+        #0ED4DD, #70FFE7, null,
+        null, #0887A5, #1C9EAF
     ),
     $increments: ( //How strongly each color should be blended
         25%,   60%,   80%,
         5%,   40%,   70%
     )
 );
+
+$highlight-gradient: color('highlight', 'light'),
+    color('highlight') 35%,
+    color('highlight', 'dark');
 
 $selection-background-color: mix(color('links'), color('bg'), 80%);
 
